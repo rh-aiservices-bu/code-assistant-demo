@@ -1,0 +1,23 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: codellama-7b-svc
+  namespace: rcarrata-llm
+  labels:
+    app: isvc.codellama-7b-predictor
+    component: predictor
+    opendatahub.io/dashboard: 'false'
+    serving.kserve.io/inferenceservice: codellama-7b
+spec:
+  ipFamilies:
+    - IPv4
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  internalTrafficPolicy: Cluster
+  type: ClusterIP
+  ipFamilyPolicy: SingleStack
+  sessionAffinity: None
+  selector:
+    app: isvc.codellama-7b-predictor

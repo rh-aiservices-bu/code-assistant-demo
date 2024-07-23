@@ -1,0 +1,9 @@
+apiVersion: serving.kserve.io/v1beta1
+kind: InferenceService
+metadata:
+  name: codellama-7b
+  namespace: rcarrata-llm
+  annotations:
+    serving.knative.openshift.io/enablePassthrough: 'false'
+    sidecar.istio.io/inject: 'false'
+    sidecar.istio.io/rewriteAppHTTPProbers: 'false'

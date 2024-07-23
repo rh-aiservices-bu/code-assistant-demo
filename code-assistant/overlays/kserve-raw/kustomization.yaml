@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: rcarrata-llm
+
+resources:
+  - ../default
+
+patchesStrategicMerge:
+  - add-kserve-raw-sr-patch.yaml
+  - add-kserve-raw-is-patch.yaml
+  - remove-kserve-istio-is-patch.yaml
+  - svc-kserve-raw.yaml
