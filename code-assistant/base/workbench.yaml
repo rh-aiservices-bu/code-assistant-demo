@@ -4,20 +4,19 @@ metadata:
   annotations:
     notebooks.opendatahub.io/inject-oauth: 'true'
     opendatahub.io/image-display-name: code-server
-    notebooks.opendatahub.io/oauth-logout-url: 'https://rhods-dashboard-redhat-ods-applications.apps.dev.rhoai.rh-aiservices-bu.com/projects/rcarrata-llm?notebookLogout=code-assistant'
+    notebooks.opendatahub.io/oauth-logout-url: 'REPLACE_ME_WITH_YOUR_ENDPOINT/projects/REPLACE_ME_WITH_YOUR_PROJECT?notebookLogout=code-assistant'
     opendatahub.io/accelerator-name: ''
     openshift.io/description: code-assistant
     openshift.io/display-name: code-assistant
     notebooks.opendatahub.io/last-image-selection: 'code-server-notebook:2024.1'
     notebooks.opendatahub.io/last-size-selection: Medium
-    opendatahub.io/username: rcarrata@redhat.com
+    opendatahub.io/username: REPLACE_ME_WITH_YOUR_USER
   name: code-assistant
-  namespace: rcarrata-llm
   labels:
     app: code-assistant
     opendatahub.io/dashboard: 'true'
     opendatahub.io/odh-managed: 'true'
-    opendatahub.io/user: rcarrata-40redhat-2ecom
+    opendatahub.io/user: REPLACE_ME_WITH_YOUR_USER
 spec:
   template:
     spec:
@@ -44,7 +43,7 @@ spec:
           livenessProbe:
             failureThreshold: 3
             httpGet:
-              path: /notebook/rcarrata-llm/code-assistant/api
+              path: /notebook/REPLACE_ME_WITH_YOUR_PROJECT/code-assistant/api
               port: notebook-port
               scheme: HTTP
             initialDelaySeconds: 10
@@ -57,9 +56,9 @@ spec:
                 --ServerApp.port=8888
                                   --ServerApp.token=''
                                   --ServerApp.password=''
-                                  --ServerApp.base_url=/notebook/rcarrata-llm/code-assistant
+                                  --ServerApp.base_url=/notebook/REPLACE_ME_WITH_YOUR_PROJECT/code-assistant
                                   --ServerApp.quit_button=False
-                                  --ServerApp.tornado_settings={"user":"rcarrata-40redhat-2ecom","hub_host":"https://rhods-dashboard-redhat-ods-applications.apps.dev.rhoai.rh-aiservices-bu.com","hub_prefix":"/projects/rcarrata-llm"}
+                                  --ServerApp.tornado_settings={"user":"rcarrata-40redhat-2ecom","hub_host":"REPLACE_ME_WITH_YOUR_ENDPOINT","hub_prefix":"/projects/REPLACE_ME_WITH_YOUR_PROJECT"}
             - name: JUPYTER_IMAGE
               value: 'image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/code-server-notebook:2024.1'
             - name: SSL_CERT_FILE
@@ -146,7 +145,7 @@ spec:
             - '--email-domain=*'
             - '--skip-provider-button'
             - '--openshift-sar={"verb":"get","resource":"notebooks","resourceAPIGroup":"kubeflow.org","resourceName":"code-assistant","namespace":"$(NAMESPACE)"}'
-            - '--logout-url=https://rhods-dashboard-redhat-ods-applications.apps.dev.rhoai.rh-aiservices-bu.com/projects/rcarrata-llm?notebookLogout=code-assistant'
+            - '--logout-url=https://REPLACE_ME_WITH_YOUR_ENDPOINT/projects/REPLACE_ME_WITH_YOUR_PROJECT?notebookLogout=code-assistant'
       enableServiceLinks: false
       serviceAccountName: code-assistant
       volumes:

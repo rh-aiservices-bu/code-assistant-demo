@@ -2,7 +2,6 @@ kind: Service
 apiVersion: v1
 metadata:
   name: codellama-7b-svc
-  namespace: rcarrata-llm
   labels:
     app: isvc.codellama-7b-predictor
     component: predictor

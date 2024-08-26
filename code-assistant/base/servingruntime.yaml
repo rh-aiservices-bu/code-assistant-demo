@@ -9,7 +9,6 @@ metadata:
     opendatahub.io/template-name: vllm-runtime
     openshift.io/display-name: codellama-7b
   name: codellama-7b
-  namespace: rcarrata-llm
   labels:
     opendatahub.io/dashboard: 'true'
 spec:
